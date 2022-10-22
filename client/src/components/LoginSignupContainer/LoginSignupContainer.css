@@ -1,0 +1,46 @@
+.login-signup-container {
+    display: grid;
+    grid-template-columns: 70% 30% 70%;
+    width: 60%;
+    height: 500px;
+    background-color: #f5f5f5;
+    padding: 0px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #000;
+    overflow: hidden;
+    transition: 0.3s linear;
+}
+
+.login-signup-container.active {
+    grid-template-columns: 0% 30% 70%;
+    transition: 0.3s linear;
+
+}
+
+.login-signup-container .side-div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2019-05-how-to-grill-steak%2FHTGrillSteak_TheKitchn042919_92");
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+}
+
+.login-signup-container .side-div button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+    font-size: 0.99rem;
+    transition: 0.3s linear;
+}
+
+.login-signup-container .side-div button:hover {
+    background-color: rgb(55, 54, 54);
+    border: 1px solid rgb(55, 54, 54);
+}
