@@ -11,7 +11,7 @@ const App = () => {
     const [recipes, setRecipes] = useState([]);
     
     useEffect(() => {
-        fetch("http://localhost:9292/recipes")
+        fetch("/recipes")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
