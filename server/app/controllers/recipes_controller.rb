@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
         else
             render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
+        end
 
         def index
             recipes = Recipe.all
