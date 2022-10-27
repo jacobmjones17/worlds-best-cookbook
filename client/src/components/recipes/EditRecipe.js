@@ -8,29 +8,32 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
     const recipeToEdit = recipes.find(recipe => {
         return recipe.id === parsedParams
     })
-    // recipeToEdit.ingredients[0].name !== "" ? recipeToEdit.ingredients[0].name : "",
-    // recipeToEdit.ingredients[1].name !== "" ? recipeToEdit.ingredients[1].name : "",
-    // recipeToEdit.ingredients[2].name !== "" ? recipeToEdit.ingredients[2].name : "",
-    // recipeToEdit.ingredients[3].name !== "" ? recipeToEdit.ingredients[3].name : "",
-    // recipeToEdit.ingredients[4].name !== "" ? recipeToEdit.ingredients[4].name : "",
+    // recipeToEdit.ingredients[0].name !== null ? recipeToEdit.ingredients[0].name : "",
+    // recipeToEdit.ingredients[1].name !== null ? recipeToEdit.ingredients[1].name : "",
+    // recipeToEdit.ingredients[2].name !== null ? recipeToEdit.ingredients[2].name : "",
+    // recipeToEdit.ingredients[3].name !== null ? recipeToEdit.ingredients[3].name : "",
+    // recipeToEdit.ingredients[4].name !== null ? recipeToEdit.ingredients[4].name : "",
 
-    console.log(recipeToEdit.name)
+    // console.log(recipeToEdit.name)
+    
 
     const [formData, setFormData] = useState({
         name: recipeToEdit.name,
         instructions: recipeToEdit.instructions,
         picture: recipeToEdit.picture,
-        ingredient1: recipeToEdit.ingredients[0].name,
-        ingredient2: recipeToEdit.ingredients[1].name,
-        ingredient3: recipeToEdit.ingredients[2].name,
-        ingredient4: recipeToEdit.ingredients[3].name,
-        ingredient5: recipeToEdit.ingredients[4].name
+        ingredient1: recipeToEdit.ingredients[0] ? recipeToEdit.ingredients[0].name : "",
+        ingredient2: recipeToEdit.ingredients[1] ? recipeToEdit.ingredients[1].name : "",
+        ingredient3: recipeToEdit.ingredients[2] ? recipeToEdit.ingredients[2].name : "",
+        ingredient4: recipeToEdit.ingredients[3] ? recipeToEdit.ingredients[3].name : "",
+        ingredient5: recipeToEdit.ingredients[4] ? recipeToEdit.ingredients[4].name : ""
     });
+
 
     function handleChange(event) {
         setFormData({
             ...formData,
             [event.target.name]: event.target.value,
+            
         });
     }
 

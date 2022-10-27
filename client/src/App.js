@@ -11,7 +11,7 @@ const App = () => {
     const [recipes, setRecipes] = useState([]);
     
     useEffect(() => {
-        fetch("/recipes")
+        fetch("http://localhost:9292/recipes")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
@@ -44,7 +44,7 @@ return (
     <NavBar />
     <Routes>
     <Route path="/recipes/:id/edit" element={<EditRecipe recipes={recipes} onUpdateRecipe={handleUpdateRecipe}/>} />
-    <Route path="/recipes/add" element={< NewRecipe onAddRecipe={handleAddRecipe} />} />
+    <Route path="/recipes/create" element={< NewRecipe onAddRecipe={handleAddRecipe} />} />
     <Route path="/recipes" element={<Home
     recipes={recipes}
     onDeleteRecipe={handleDeleteRecipe}

@@ -8,6 +8,7 @@ function Recipe({ recipeCard }) {
         return (<li>{ingredient.name}</li>)
     })
 
+    console.log(recipeCard)
     return (
         <div 
         className = {`card ${flip ? 'flip' : ''}`}
