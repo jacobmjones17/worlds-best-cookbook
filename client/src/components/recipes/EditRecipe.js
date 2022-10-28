@@ -8,13 +8,6 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
     const recipeToEdit = recipes.find(recipe => {
         return recipe.id === parsedParams
     })
-    // recipeToEdit.ingredients[0].name !== null ? recipeToEdit.ingredients[0].name : "",
-    // recipeToEdit.ingredients[1].name !== null ? recipeToEdit.ingredients[1].name : "",
-    // recipeToEdit.ingredients[2].name !== null ? recipeToEdit.ingredients[2].name : "",
-    // recipeToEdit.ingredients[3].name !== null ? recipeToEdit.ingredients[3].name : "",
-    // recipeToEdit.ingredients[4].name !== null ? recipeToEdit.ingredients[4].name : "",
-
-    // console.log(recipeToEdit.name)
     
 
     const [formData, setFormData] = useState({

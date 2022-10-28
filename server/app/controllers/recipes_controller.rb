@@ -24,12 +24,12 @@ class RecipesController < ApplicationController
         end
 
         def show
-           recipe = Recipe.find_by(id: params[:id])
-           if recipe
+            recipe = Recipe.find_by(id: params[:id])
+            if recipe
                 render json: recipe
-           else
+            else
             render json: { error:"Recipe not found"}
-           end 
+            end 
         end
 
 

@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActiveRecord::Base
   include ActionController::Cookies
 
 end
