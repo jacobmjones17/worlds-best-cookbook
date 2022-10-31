@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   
   post "/ingredients", to: "ingredients#create"
 
+  get "/recipeIngredients", to: "recipe_ingredients#index"
+
+  post "/recipeIngredients", to: "recipe_ingredients#create"
+
   post "/login", to: "sessions#create"
 
   post "/signup", to: "users#create"
