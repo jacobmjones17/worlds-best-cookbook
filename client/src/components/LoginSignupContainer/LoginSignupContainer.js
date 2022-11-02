@@ -3,7 +3,7 @@ import "./LoginSignupContainer.css"
 import Login from '../login/Login';
 import Signup from '../signup/Signup';
 
-function LoginSignupContainer() {
+function LoginSignupContainer({ onLogin }) {
     const [login, setLogin] = useState(true);
     const loginSignupContainerRef = useRef(null)
     
@@ -15,11 +15,11 @@ function LoginSignupContainer() {
 
 return (
     <div className="login-signup-container" ref={loginSignupContainerRef}>
-    <Login />
+    <Login onLogin={onLogin}/>
     <div className="side-div">
     <button type="button" onClick={handleClick}> {login ? "Login" : "Signup"} </button>
     </div>
-    <Signup/>
+    <Signup onLogin={onLogin}/>
     </div>
 )
 }

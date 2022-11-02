@@ -9,14 +9,30 @@ import './App.css';
 
 const App = () => {
     const [recipes, setRecipes] = useState([]);
+    const [user, setUser] = useState(null);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const loginUser = (currentUser) => {
+        setUser(currentUser);
+        setLoggedIn(true)
+    };
+
+    const logoutUser = () => {
+        setUser({});
+        setLoggedIn(false);
+    };
+    
     
     useEffect(() => {
+        fetch("/me")
+        .then((response) => {;
+            response.json().then((user) => loginUser(user))
+        })
+
         fetch("/recipes")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
-
-    console.log(recipes.name)
 
     function handleDeleteRecipe(id) {
         const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
@@ -52,7 +68,7 @@ return (
     onDeleteRecipe={handleDeleteRecipe}
     onAddRecipe={handleAddRecipe}
     />} />
-    <Route path="/" element={<LoginSignupContainer />} />
+    <Route path="/" element={<LoginSignupContainer onLogin={loginUser} onLogout={logoutUser}/>} />
     </Routes>
     </div>
 )

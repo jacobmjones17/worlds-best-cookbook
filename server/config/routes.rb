@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :recipes
   resources :ingredients
   resources :users
-  recources :recipe_ingredients
+  resources :recipe_ingredients
 
   post "/login", to: "sessions#create"
 

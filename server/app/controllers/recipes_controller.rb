@@ -15,9 +15,8 @@ class RecipesController < ApplicationController
     end
 
         def index
-            byebug
-            user = User.find_by(id: session[:user_id])
-            recipes = user.recipes
+            # user = User.find_by(id: session[:user_id])
+            recipes = Recipe.all
             if session[:user_id]
                 render json: recipes
             else
