@@ -11,10 +11,12 @@ const App = () => {
     const [recipes, setRecipes] = useState([]);
     
     useEffect(() => {
-        fetch("http://localhost:9292/recipesIngredients")
+        fetch("/recipes")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
+
+    console.log(recipes.name)
 
     function handleDeleteRecipe(id) {
         const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);

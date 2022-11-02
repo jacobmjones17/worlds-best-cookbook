@@ -18,7 +18,7 @@ function Recipe({ recipeCard }) {
                 <div className="container">
                     <img src={recipeCard.picture} alt=""></img>
                 </div> {recipeCard.name} </div>
-            <div className="back"> 
+            <div className="back">
             <h2>Ingredients: {mapRecipeCard} </h2>
             <h3>Instructions: {recipeCard.instructions} </h3>
             </div>
