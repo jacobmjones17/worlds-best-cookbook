@@ -68,7 +68,7 @@ return (
     onDeleteRecipe={handleDeleteRecipe}
     onAddRecipe={handleAddRecipe}
     />} />
-    <Route path="/" element={<LoginSignupContainer onLogin={loginUser} onLogout={logoutUser}/>} />
+    <Route path="/" element={<LoginSignupContainer onLogin={loginUser} onLogout={logoutUser} user={user}/>} />
     </Routes>
     </div>
 )

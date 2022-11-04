@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
-const Login = ({ onLogin }) => {
+const Login = ( { onLogin } ) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Login = ({ onLogin }) => {
     return (
         <div className="login">
             <h1>Login</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type={"email"}
                 placeholder={"Email"}
                 id="email"
