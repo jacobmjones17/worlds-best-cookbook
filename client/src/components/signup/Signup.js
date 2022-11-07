@@ -17,7 +17,8 @@ const Signup = ( {onLogin} ) => {
           },
           body: JSON.stringify({
             username,
-            password
+            password,
+            confirmPassword
           }),
         }).then((response) => {
           if (response.ok) {
@@ -52,7 +53,7 @@ const Signup = ( {onLogin} ) => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                <button type={"submit"}>Signup</button>
+                <button type="submit">Signup</button>
             </form>
         </div>
     )

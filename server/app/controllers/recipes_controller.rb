@@ -17,11 +17,12 @@ class RecipesController < ApplicationController
         def index
             # user = User.find_by(id: session[:user_id])
             recipes = Recipe.all
-            if session[:user_id]
-                render json: recipes
-            else
-                render json: { errors: ["Not authorized"] }, status: :unauthorized
-            end
+            render json: recipes
+            # if session[:user_id]
+            #     render json: recipes
+            # else
+            #     render json: { errors: ["Not authorized"] }, status: :unauthorized
+            # end
         end
 
         def show

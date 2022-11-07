@@ -9,7 +9,7 @@ const Login = ( { onLogin } ) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("/login", {
+        fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
@@ -27,22 +27,22 @@ const Login = ( { onLogin } ) => {
         <div className="login">
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <input type={"email"}
-                placeholder={"Email"}
+                <input type="email"
+                placeholder="Email"
                 id="email"
                 autoComplete="off"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 />
                 <input 
-                type={"password"} 
-                placeholder={"Password"} 
+                type="password"
+                placeholder="Password" 
                 id="password"
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type={"submit"} value="Login">Login</button>
+                <button type="submit" value="Login">Login</button>
             </form>
         </div>
     );
