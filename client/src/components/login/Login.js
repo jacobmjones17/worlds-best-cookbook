@@ -9,27 +9,59 @@ const Login = ( { onLogin } ) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:3000/login", {
+        fetch("http://localhost:3001/login", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
         }).then((response) => {
             if (response.ok) {
             response.json().then((user) => onLogin(user));
             navigate("/recipes");
             }
+            else {
+                response.json().then(console.log)
+            }
         });
     }
+
+    // function handleSubmit(event) {
+    //     event.preventDefault();
+    //     // debugger
+    //     fetch("http://localhost:3001/signup", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         username: username,
+    //         password: password,
+    //         password_confirmation: confirmPassword
+    //       }),
+    //     }).then((response) => {
+    //       if (response.ok) {
+    //         response.json().then((user) => onLogin(user));
+    //         navigate("/")
+    //       }
+    //       else {
+    //         response.json().then(console.log)
+    //       }
+    //     });
+    //   }
+
 
     return (
         <div className="login">
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <input type="email"
+                <input 
+                type="text"
                 placeholder="Email"
-                id="email"
+                id="login-email"
                 autoComplete="off"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -37,7 +69,7 @@ const Login = ( { onLogin } ) => {
                 <input 
                 type="password"
                 placeholder="Password" 
-                id="password"
+                id="login-password"
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

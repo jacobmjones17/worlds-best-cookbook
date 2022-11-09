@@ -10,20 +10,24 @@ const Signup = ( {onLogin} ) => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        fetch("/signup", {
+        // debugger
+        fetch("http://localhost:3001/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username,
-            password,
-            confirmPassword
+            username: username,
+            password: password,
+            password_confirmation: confirmPassword
           }),
         }).then((response) => {
           if (response.ok) {
             response.json().then((user) => onLogin(user));
             navigate("/")
+          }
+          else {
+            response.json().then(console.log)
           }
         });
       }
@@ -33,22 +37,22 @@ const Signup = ( {onLogin} ) => {
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
                 <input 
-                    type="email"
-                    id="username"
+                    type="text"
+                    id="signup-email"
                     placeholder="Email"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <input 
                     type="password"
-                    id="username" 
+                    id="signup-password" 
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input 
                 type="password"
-                id="username"
+                id="confirm-password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import NavBar from "./components/navbar/NavBar";
 import LoginSignupContainer from "./components/LoginSignupContainer/LoginSignupContainer";
 import { Routes, Route } from 'react-router-dom';
@@ -64,6 +64,7 @@ return (
     <Route path="/recipes/:id/edit" element={<EditRecipe recipes={recipes} onUpdateRecipe={handleUpdateRecipe}/>} />
     <Route path="/recipes/create" element={< NewRecipe onAddRecipe={handleAddRecipe} />} />
     <Route path="/recipes" element={<Home
+    loggedIn={loggedIn}
     recipes={recipes}
     onDeleteRecipe={handleDeleteRecipe}
     onAddRecipe={handleAddRecipe}
