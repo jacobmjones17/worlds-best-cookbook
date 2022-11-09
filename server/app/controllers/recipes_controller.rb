@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+    before_action :authorize
     
     def create
         user = User.find_by(id: session[:user_id])
@@ -15,14 +16,13 @@ class RecipesController < ApplicationController
     end
 
         def index
-            # user = User.find_by(id: session[:user_id])
             recipes = Recipe.all
-            render json: recipes
-            # if session[:user_id]
-            #     render json: recipes
-            # else
-            #     render json: { errors: ["Not authorized"] }, status: :unauthorized
-            # end
+
+            if session[:user_id]
+                render json: recipes
+            else
+                render json: { errors: ["Not authorized"] }, status: :unauthorized
+            end
         end
 
         def show

@@ -11,7 +11,7 @@ function LoginSignupContainer({ onLogin }) {
         setLogin(!login);
     }
 
-    loginSignupContainerRef.current.classList.toggle("active");
+    // loginSignupContainerRef.current.classList.toggle("active");
 
 return (
     <div className="login-signup-container" ref={loginSignupContainerRef}>

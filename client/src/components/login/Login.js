@@ -29,30 +29,6 @@ const Login = ( { onLogin } ) => {
         });
     }
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     // debugger
-    //     fetch("http://localhost:3001/signup", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         username: username,
-    //         password: password,
-    //         password_confirmation: confirmPassword
-    //       }),
-    //     }).then((response) => {
-    //       if (response.ok) {
-    //         response.json().then((user) => onLogin(user));
-    //         navigate("/")
-    //       }
-    //       else {
-    //         response.json().then(console.log)
-    //       }
-    //     });
-    //   }
-
 
     return (
         <div className="login">

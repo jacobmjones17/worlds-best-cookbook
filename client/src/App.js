@@ -24,12 +24,12 @@ const App = () => {
     
     
     useEffect(() => {
-        fetch("/me")
+        fetch("http://localhost:3001/me")
         .then((response) => {;
             response.json().then((user) => loginUser(user))
         })
 
-        fetch("/recipes")
+        fetch("http://localhost:3001/recipes")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
