@@ -34,8 +34,6 @@ const App = () => {
         .then((recipes) => setRecipes(recipes))
     }, []);
 
-    console.log(recipes)
-
     function handleDeleteRecipe(id) {
         const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
         setRecipes(updatedRecipes)

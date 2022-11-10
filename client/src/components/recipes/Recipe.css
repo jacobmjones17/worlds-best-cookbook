@@ -2,7 +2,7 @@
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 7rem;
+    gap: 10rem;
     margin-top: 3.8rem;
     margin-left: 2rem;
     margin-right: 3rem
@@ -22,8 +22,8 @@
     background-position: center;
     background-size:cover;
     transform-style: preserve-3d;
-    height: 450px;
-    width: 400px;
+    height: 525px;
+    width: 450px;
     transition: 150ms;
     cursor: pointer;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0))

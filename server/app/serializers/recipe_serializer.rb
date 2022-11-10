@@ -5,8 +5,6 @@ class RecipeSerializer < ActiveModel::Serializer
     # has_many :ingredients, through: :recipe_ingredients
 
     def measurement_and_name
-      
-      object.recipe_ingredient.map { |recipe_ingredient| {name: recipe_ingredient.recipe_ingredient_name, measurement: recipe_ingredient.name} }
-    
+      object.recipe_ingredients.map { |recipe_ingredient| {name: recipe_ingredient.recipe_ingredient_name, measurement: recipe_ingredient.measurement} }
     end
 end

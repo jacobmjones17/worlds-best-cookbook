@@ -29,7 +29,8 @@ function NewRecipe ({ onAddRecipe }) {
             "ingredient2": formData.ingredient2 !== "" ? formData.ingredient2 : null,
             "ingredient3": formData.ingredient3 !== "" ? formData.ingredient3 : null,
             "ingredient4": formData.ingredient4 !== "" ? formData.ingredient4 : null,
-            "ingredient5": formData.ingredient5 !== "" ? formData.ingredient5 : null
+            "ingredient5": formData.ingredient5 !== "" ? formData.ingredient5 : null,
+            "measurement": formData.measurement !== "" ? formData.measurement : null
         }
         fetch("/recipes", {
             method: "POST",
@@ -50,6 +51,7 @@ function NewRecipe ({ onAddRecipe }) {
                 ingredient3: "",
                 ingredient4: "",
                 ingredient5: "",
+                measurement: ""
             })})
     }
 
@@ -127,6 +129,15 @@ function NewRecipe ({ onAddRecipe }) {
                         type="text"
                         name="ingredient5"
                         value={formData.ingredient5}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label>
+                    Measurement:
+                    <input
+                        type="text"
+                        name="measurement"
+                        value={formData.measurement}
                         onChange={handleChange}
                     />
                 </label>

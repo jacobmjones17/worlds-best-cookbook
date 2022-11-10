@@ -30,4 +30,4 @@ avocado_toast.recipe_ingredients.create!(measurement: "1/2 avocado", ingredient_
 avocado_toast.recipe_ingredients.create!(measurement: "Pinch of Salt", ingredient_id: fifth.id)
 avocado_toast.recipe_ingredients.create!(measurement: "Pinch of Pepper", ingredient_id: sixth.id)
 
-puts "✅ Done seeding!"
+puts "✅ Done seeding!" 

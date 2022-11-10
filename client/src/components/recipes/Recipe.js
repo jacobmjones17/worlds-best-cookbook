@@ -3,12 +3,19 @@ import React, { useState } from "react";
 
 function Recipe({ recipeCard }) {
     const [flip, setFlip] = useState(false);
+    console.log(recipeCard)
 
-    const mapRecipeCard = recipeCard.recipe_ingredients.map((recipe_ingredient) => {
-        return (<li>{recipe_ingredient.measurement}</li>)
+    console.log(recipeCard.measurement_and_name)
+
+    const ingredient = recipeCard.measurement_and_name.map((ingredient) => {
+        return (<li>{ingredient.name}</li>)
     })
 
-    console.log(recipeCard)
+    const measurement = recipeCard.measurement_and_name.map((ingredient) => {
+        return <li>{ingredient.measurement}</li>
+    })
+
+
     return (
         <div 
         className = {`card ${flip ? 'flip' : ''}`}
@@ -19,7 +26,8 @@ function Recipe({ recipeCard }) {
                     <img src={recipeCard.picture} alt=""></img>
                 </div> {recipeCard.name} </div>
             <div className="back">
-            <h2>Ingredients: {mapRecipeCard} </h2>
+            <h2>Ingredients: {ingredient} </h2>
+            <h2>Measurement: {measurement} </h2>
             <h3>Instructions: {recipeCard.instructions} </h3>
             </div>
         </div>
