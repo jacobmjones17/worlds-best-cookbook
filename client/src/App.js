@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./components/navbar/NavBar";
 import LoginSignupContainer from "./components/LoginSignupContainer/LoginSignupContainer";
 import { Routes, Route } from 'react-router-dom';
@@ -24,15 +24,17 @@ const App = () => {
     
     
     useEffect(() => {
-        fetch("http://localhost:3001/me")
+        fetch("/me")
         .then((response) => {;
             response.json().then((user) => loginUser(user))
         })
 
-        fetch("http://localhost:3001/recipes")
+        fetch("/recipes")
         .then((response) => response.json())
         .then((recipes) => setRecipes(recipes))
     }, []);
+
+    console.log(recipes)
 
     function handleDeleteRecipe(id) {
         const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);

@@ -4,8 +4,8 @@ import React, { useState } from "react";
 function Recipe({ recipeCard }) {
     const [flip, setFlip] = useState(false);
 
-    const mapRecipeCard = recipeCard.ingredients.map((ingredient) => {
-        return (<li>{ingredient.name}</li>)
+    const mapRecipeCard = recipeCard.recipe_ingredients.map((recipe_ingredient) => {
+        return (<li>{recipe_ingredient.measurement}</li>)
     })
 
     console.log(recipeCard)

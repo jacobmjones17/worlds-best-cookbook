@@ -8,7 +8,7 @@ function RecipeList({ recipes, onDeleteRecipe}) {
     const navigate = useNavigate()
 
     function handleDeleteClick(recipeCard) {
-        fetch(`http://localhost:9292/recipes/${recipeCard.id}`, {
+        fetch(`/recipes/${recipeCard.id}`, {
             method: "DELETE",
         });
         onDeleteRecipe(recipeCard.id)
@@ -21,7 +21,7 @@ function RecipeList({ recipes, onDeleteRecipe}) {
         recipeCard={recipeCard}
         />
         <button className="remove" onClick={() => handleDeleteClick(recipeCard)}>DELETE</button>
-        <button className="edit" onClick={() => navigate(`http://localhost:3001/recipes/${recipeCard.id}/edit`)}>EDIT</button>
+        <button className="edit" onClick={() => navigate(`/recipes/${recipeCard.id}/edit`)}>EDIT</button>
         </div>
         )
     })

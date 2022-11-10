@@ -11,7 +11,7 @@ const Signup = ( {onLogin} ) => {
     function handleSubmit(event) {
         event.preventDefault();
         // debugger
-        fetch("http://localhost:3001/signup", {
+        fetch("/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

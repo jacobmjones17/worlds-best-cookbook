@@ -31,7 +31,7 @@ function NewRecipe ({ onAddRecipe }) {
             "ingredient4": formData.ingredient4 !== "" ? formData.ingredient4 : null,
             "ingredient5": formData.ingredient5 !== "" ? formData.ingredient5 : null
         }
-        fetch("http://localhost:9292/recipes", {
+        fetch("/recipes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
