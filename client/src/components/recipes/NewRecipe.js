@@ -5,11 +5,15 @@ function NewRecipe ({ onAddRecipe }) {
         name: "",
         instructions: "",
         picture: "",
-        ingredient1: "",
-        ingredient2: "",
-        ingredient3: "",
-        ingredient4: "",
-        ingredient5: "",
+        
+        // recipe_ingredients_attributes: [
+        //     {name: "", measurement: ""}
+        // ]
+        // ingredient1: "",
+        // ingredient2: "",
+        // ingredient3: "",
+        // ingredient4: "",
+        // ingredient5: "",
     });
 
     function handleChange(event) {
@@ -46,12 +50,12 @@ function NewRecipe ({ onAddRecipe }) {
                 name: "",
                 instructions: "",
                 picture: "",
-                ingredient1: "",
-                ingredient2: "",
-                ingredient3: "",
-                ingredient4: "",
-                ingredient5: "",
-                measurement: ""
+                // ingredient1: "",
+                // ingredient2: "",
+                // ingredient3: "",
+                // ingredient4: "",
+                // ingredient5: "",
+                // measurement: ""
             })})
     }
 
@@ -87,7 +91,7 @@ function NewRecipe ({ onAddRecipe }) {
                         onChange={handleChange}
                     />
                 </label>
-                <label>
+                {/* <label>
                     Ingredient1:
                     <input
                         type="text"
@@ -140,8 +144,10 @@ function NewRecipe ({ onAddRecipe }) {
                         value={formData.measurement}
                         onChange={handleChange}
                     />
-                </label>
-                <button type="submit">Add Recipe</button>
+                </label> */}
+                <button type="add-ingredient">Add Ingredient</button>
+                <button type="submit">Submit Recipe</button>
+                
             </form>
             </div>
         </section>
