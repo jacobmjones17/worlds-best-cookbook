@@ -33,7 +33,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
     function handleFormSubmit(e) {
         e.preventDefault();
     
-        fetch(`http://localhost:9292/recipes/${params.id}`, {
+        fetch(`/recipes/${params.id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

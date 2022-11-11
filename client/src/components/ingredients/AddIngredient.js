@@ -1,74 +1,56 @@
 import React from "react"
 
-function NewRecipe ({ onAddRecipe }) {
-
-    function handleChange(event) {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        const newRecipeInfo = {
-            "ingredient": formData.ingredient !== "" ? formData.ingredient : null,
-            "measurement": formData.measurement !== "" ? formData.measurement : null
-        }
-        fetch("/recipes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newRecipeInfo)
-        })
-            .then((response) => response.json())
-            .then((newRecipe) => {
-                onAddRecipe(newRecipe)
-                setFormData({
-                ingredient: "",
-                measurement: "",
-            })})
-    }
+function AddIngredient ({ handleServiceAdd, handleServiceChange, handleServiceRemove, ingredientList}) {
 
     return (
-        <section>
-            <div className="recipeform">
-            <h1>New Recipe</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Name:
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Instructions:
-                    <input
-                        type="text"
-                        name="instructions"
-                        value={formData.instructions}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Picture:
-                    <input
-                        type="text"
-                        name="picture"
-                        value={formData.picture}
-                        onChange={handleChange}
-                    />
-                </label>
-                <button type="add-ingredient">Add Ingredient</button>
-                
-            </form>
+        <div className="form-field">
+        
+        {ingredientList.map((singleService, index) => (
+            <div key={index} className="services">
+            <div className="first-division">
+            <label htmlFor="service">Ingredient</label>
+                <input
+                name="ingredient"
+                type="text"
+                id="service"
+                value={singleService.service}
+                onChange={(e) => handleServiceChange(e, index)}
+                required
+                />
+                <label htmlFor="service">Measurement</label>
+                <input
+                name="measurement"
+                type="text"
+                id="service"
+                value={singleService.measurement}
+                onChange={(e) => handleServiceChange(e, index)}
+                required
+                />
+                {ingredientList.length - 1 === index && ingredientList.length < 10 && (
+                <button
+                    type="button"
+                    onClick={handleServiceAdd}
+                    className="add-btn"
+                >
+                <span>Add an Ingredient</span>
+                </button>
+                )}
             </div>
-        </section>
+            <div className="second-division">
+                {ingredientList.length !== 1 && (
+                <button
+                    type="button"
+                    onClick={() => handleServiceRemove(index)}
+                    className="remove-btn"
+                >
+                    <span>Remove</span>
+                </button>
+                )}
+            </div>
+            </div>
+        ))}
+        </div>
     );
 }
 
-export default NewRecipe;
+export default AddIngredient;

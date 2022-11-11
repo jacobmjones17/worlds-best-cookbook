@@ -1,20 +1,33 @@
 import React, { useState } from "react";
+import AddIngredient from "../ingredients/AddIngredient"
 
 function NewRecipe ({ onAddRecipe }) {
     const [formData, setFormData] = useState({
         name: "",
         instructions: "",
         picture: "",
-        
-        // recipe_ingredients_attributes: [
-        //     {name: "", measurement: ""}
-        // ]
-        // ingredient1: "",
-        // ingredient2: "",
-        // ingredient3: "",
-        // ingredient4: "",
-        // ingredient5: "",
     });
+
+    const [ingredientList, setIngredientList] = useState([{ ingredient: "", measurement: ""}]);
+
+    const handleServiceChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...ingredientList];
+    list[index][name] = value;
+    setIngredientList(list);
+    };
+
+    const handleServiceRemove = (index) => {
+    const list = [...ingredientList];
+    list.splice(index, 1);
+    setIngredientList(list);
+    };
+
+    const handleServiceAdd = () => {
+    setIngredientList([...ingredientList, { ingredient: "", measurement: "" }]);
+    };
+
+
 
     function handleChange(event) {
         setFormData({
@@ -29,12 +42,6 @@ function NewRecipe ({ onAddRecipe }) {
             "name": formData.name,
             "instructions": formData.instructions,
             "picture": formData.picture,
-            "ingredient1": formData.ingredient1 !== "" ? formData.ingredient1 : null,
-            "ingredient2": formData.ingredient2 !== "" ? formData.ingredient2 : null,
-            "ingredient3": formData.ingredient3 !== "" ? formData.ingredient3 : null,
-            "ingredient4": formData.ingredient4 !== "" ? formData.ingredient4 : null,
-            "ingredient5": formData.ingredient5 !== "" ? formData.ingredient5 : null,
-            "measurement": formData.measurement !== "" ? formData.measurement : null
         }
         fetch("/recipes", {
             method: "POST",
@@ -50,14 +57,10 @@ function NewRecipe ({ onAddRecipe }) {
                 name: "",
                 instructions: "",
                 picture: "",
-                // ingredient1: "",
-                // ingredient2: "",
-                // ingredient3: "",
-                // ingredient4: "",
-                // ingredient5: "",
-                // measurement: ""
             })})
     }
+
+    
 
     return (
         <section>
@@ -91,63 +94,9 @@ function NewRecipe ({ onAddRecipe }) {
                         onChange={handleChange}
                     />
                 </label>
-                {/* <label>
-                    Ingredient1:
-                    <input
-                        type="text"
-                        name="ingredient1"
-                        value={formData.ingredient1}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Ingredient2:
-                    <input
-                        type="text"
-                        name="ingredient2"
-                        value={formData.ingredient2}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Ingredient3:
-                    <input
-                        type="text"
-                        name="ingredient3"
-                        value={formData.ingredient3}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Ingredient4:
-                    <input
-                        type="text"
-                        name="ingredient4"
-                        value={formData.ingredient4}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Ingredient5:
-                    <input
-                        type="text"
-                        name="ingredient5"
-                        value={formData.ingredient5}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    Measurement:
-                    <input
-                        type="text"
-                        name="measurement"
-                        value={formData.measurement}
-                        onChange={handleChange}
-                    />
-                </label> */}
-                <button type="add-ingredient">Add Ingredient</button>
-                <button type="submit">Submit Recipe</button>
                 
+                <AddIngredient handleServiceChange={handleServiceChange} handleServiceRemove={handleServiceRemove} handleServiceAdd={handleServiceAdd} ingredientList={ingredientList}/>
+                <button type="submit">Submit Recipe</button>
             </form>
             </div>
         </section>
