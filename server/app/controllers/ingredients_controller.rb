@@ -1,18 +1,18 @@
 class IngredientsController < ApplicationController
-    def create
-        user = User.find_by(id: session[:user_id])
+    # def create
+    #     user = User.find_by(id: session[:user_id])
 
-        if user
-            ingredient = user.recipes.ingredients.create(ingredient_params)
-            if ingredient.valid?
-            render json: ingredient, status: :created
-            else 
-            render json: { errors: [ingredient.errors.full_messages] }, status: :unprocessable_entity
-            end
-        else
-            render json: { errors: ["Not authorized"] }, status: :unauthorized
-        end
-    end
+    #     if user
+    #         ingredient = user.recipes.ingredients.create(ingredient_params)
+    #         if ingredient.valid?
+    #         render json: ingredient, status: :created
+    #         else 
+    #         render json: { errors: [ingredient.errors.full_messages] }, status: :unprocessable_entity
+    #         end
+    #     else
+    #         render json: { errors: ["Not authorized"] }, status: :unauthorized
+    #     end
+    # end
 
     def index
         ingredients = Ingredient.all
@@ -24,9 +24,9 @@ class IngredientsController < ApplicationController
         end
     end
 
-    private
+    # private
 
-    def recipe_params
-        params.permit(:name)
-    end
+    # def recipe_params
+    #     params.permit(:name)
+    # end
 end

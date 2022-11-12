@@ -1,35 +1,35 @@
 import React from "react"
 
-function AddIngredient ({ handleServiceAdd, handleServiceChange, handleServiceRemove, ingredientList}) {
+function AddIngredient ({ handleIngredientAdd, handleIngredientChange, handleIngredientRemove, ingredientList}) {
 
     return (
         <div className="form-field">
         
-        {ingredientList.map((singleService, index) => (
-            <div key={index} className="services">
+        {ingredientList.map((singleIngredient, index) => (
+            <div key={index} className="ingredients">
             <div className="first-division">
-            <label htmlFor="service">Ingredient</label>
+            <label htmlFor="ingredient">Ingredient</label>
                 <input
                 name="ingredient"
                 type="text"
-                id="service"
-                value={singleService.service}
-                onChange={(e) => handleServiceChange(e, index)}
+                id="ingredient"
+                value={singleIngredient.ingredient}
+                onChange={(e) => handleIngredientChange(e, index)}
                 required
                 />
-                <label htmlFor="service">Measurement</label>
+                <label htmlFor="measurement">Measurement</label>
                 <input
                 name="measurement"
                 type="text"
-                id="service"
-                value={singleService.measurement}
-                onChange={(e) => handleServiceChange(e, index)}
+                id="measurement"
+                value={singleIngredient.measurement}
+                onChange={(e) => handleIngredientChange(e, index)}
                 required
                 />
                 {ingredientList.length - 1 === index && ingredientList.length < 10 && (
                 <button
                     type="button"
-                    onClick={handleServiceAdd}
+                    onClick={handleIngredientAdd}
                     className="add-btn"
                 >
                 <span>Add an Ingredient</span>
@@ -40,7 +40,7 @@ function AddIngredient ({ handleServiceAdd, handleServiceChange, handleServiceRe
                 {ingredientList.length !== 1 && (
                 <button
                     type="button"
-                    onClick={() => handleServiceRemove(index)}
+                    onClick={() => handleIngredientRemove(index)}
                     className="remove-btn"
                 >
                     <span>Remove</span>

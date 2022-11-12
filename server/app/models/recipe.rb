@@ -4,4 +4,10 @@ class Recipe < ApplicationRecord
     has_many :ingredients, through: :recipe_ingredients
 
     validates :name, uniqueness: true
+
+    def recipe_ingredients_attributes=(array)
+        array.each do |item|
+          recipe_ingredients.build(item)
+        end
+      end
 end

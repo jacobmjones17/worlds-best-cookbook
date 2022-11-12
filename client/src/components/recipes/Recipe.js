@@ -3,9 +3,6 @@ import React, { useState } from "react";
 
 function Recipe({ recipeCard }) {
     const [flip, setFlip] = useState(false);
-    console.log(recipeCard)
-
-    console.log(recipeCard.measurement_and_name)
 
     const ingredient = recipeCard.measurement_and_name.map((ingredient) => {
         return (<li>{ingredient.name}</li>)

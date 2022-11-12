@@ -62,7 +62,7 @@ return (
     <NavBar />
     <Routes>
     <Route path="/recipes/:id/edit" element={<EditRecipe recipes={recipes} onUpdateRecipe={handleUpdateRecipe}/>} />
-    <Route path="/recipes/create" element={< NewRecipe onAddRecipe={handleAddRecipe} />} />
+    <Route path="/recipes/create" element={< NewRecipe onAddRecipe={handleAddRecipe} recipes={recipes} />} />
     <Route path="/recipes" element={<Home
     loggedIn={loggedIn}
     recipes={recipes}

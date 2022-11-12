@@ -34,11 +34,17 @@ class RecipesController < ApplicationController
             end 
         end
 
-
+        def destroy
+            recipe = Recipe.find_by(id: params[:id])
+            if recipe.user_id == @current_user.id
+              recipe.destroy
+              head:no_content
+            end
+          end
 
         private 
 
         def recipe_params
-            params.permit(:name, :instructions, :picture)
+            params.permit(:name, :instructions, :picture, measurement_and_name: [:name, :measurement])
         end
 end

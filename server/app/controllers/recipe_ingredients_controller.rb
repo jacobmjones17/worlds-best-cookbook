@@ -2,7 +2,7 @@ class RecipeIngredientsController < ApplicationController
     def create
         user = User.find_by(id: session[:user_id])
         if user
-            recipe_ingredient = user.recipes.recipe_ingredients.create(recipe_ingredient_params)
+            recipe_ingredient = user.recipes.measurement_and_name.create(recipe_ingredient_params)
             if recipe_ingredient.valid?
             render json: recipe_ingredient, status: :created
             else 
@@ -25,6 +25,6 @@ class RecipeIngredientsController < ApplicationController
         private 
 
         def recipe_ingredient_params
-            params.permit(:measurement)
+            params.permit(:name, measurement)
         end
 end
