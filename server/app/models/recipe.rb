@@ -8,8 +8,8 @@ class Recipe < ApplicationRecord
 
     def recipe_ingredients_attributes=(array)
         array.each do |hash|
-          byebug
-          new_ingredient = Ingredient.find_or_create_by(name: hash[:name].capitalize())
+          # byebug
+          new_ingredient = Ingredient.find_or_create_by(name: hash[:name])
           self.recipe_ingredients.create(ingredient_id: new_ingredient.id, measurement: hash[:measurement])
         end
     end

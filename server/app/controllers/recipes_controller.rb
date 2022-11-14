@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
     before_action :authorize
     
     def create
-        # byebug
+        byebug
         user = User.find_by(id: session[:user_id])
         if user
             recipe = user.recipes.create(recipe_params)
@@ -46,6 +46,6 @@ class RecipesController < ApplicationController
         private 
 
         def recipe_params
-            params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:name, :measurement])
+            params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:ingredient, :measurement])
         end
 end

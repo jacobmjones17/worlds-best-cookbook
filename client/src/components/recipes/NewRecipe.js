@@ -8,18 +8,6 @@ function NewRecipe ({ onAddRecipe, recipes }) {
         picture: "",
     });
     const [ingredientList, setIngredientList] = useState([{ ingredient: "", measurement: ""}]);
-    // const [measurementList, setMeasurementList] = useState([{ measurement: "" }])
-
-    // const ingredientInfo = recipes.map((recipe) => {
-    //     return recipe.measurement_and_name
-    // } )
-
-    // console.log(ingredientInfo)
-
-    // const measurementAndName = ingredientInfo.map((ingredient) => {
-    //     return ingredient.name
-    // })
-
 
     const handleIngredientChange = (e, index) => {
     const { name, value } = e.target;
@@ -73,7 +61,8 @@ function NewRecipe ({ onAddRecipe, recipes }) {
             .then((newIngredient) => {
                 handleIngredientAdd(newIngredient)
                 setIngredientList([{
-                    ingredient: ""
+                    ingredient: "",
+                    measurement: ""
                 }])
             })
     }
