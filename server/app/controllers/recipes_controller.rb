@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
     before_action :authorize
     
     def create
+        # byebug
         user = User.find_by(id: session[:user_id])
         if user
             recipe = user.recipes.create(recipe_params)
@@ -37,14 +38,14 @@ class RecipesController < ApplicationController
         def destroy
             recipe = Recipe.find_by(id: params[:id])
             if recipe.user_id == @current_user.id
-              recipe.destroy
-              head:no_content
+                recipe.destroy
+                head:no_content
             end
-          end
+        end
 
         private 
 
         def recipe_params
-            params.permit(:name, :instructions, :picture, measurement_and_name: [:name, :measurement])
+            params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:name, :measurement])
         end
 end

@@ -8,18 +8,18 @@ function NewRecipe ({ onAddRecipe, recipes }) {
         picture: "",
     });
     const [ingredientList, setIngredientList] = useState([{ ingredient: "", measurement: ""}]);
+    // const [measurementList, setMeasurementList] = useState([{ measurement: "" }])
 
-    const ingredientInfo = recipes.map((recipe) => {
-        return recipe.measurement_and_name
-    } )
+    // const ingredientInfo = recipes.map((recipe) => {
+    //     return recipe.measurement_and_name
+    // } )
 
-    console.log(ingredientInfo)
+    // console.log(ingredientInfo)
 
-    const measurementAndName = ingredientInfo.map((ingredient) => {
-        return ingredient.name
-    })
+    // const measurementAndName = ingredientInfo.map((ingredient) => {
+    //     return ingredient.name
+    // })
 
-    // console.log(measurementAndName)
 
     const handleIngredientChange = (e, index) => {
     const { name, value } = e.target;
@@ -53,10 +53,7 @@ function NewRecipe ({ onAddRecipe, recipes }) {
             "name": formData.name,
             "instructions": formData.instructions,
             "picture": formData.picture,
-        }
-        const newIngredientInfo = {
-            "name": ingredientList.name,
-            "measurement": ingredientList.measurement,
+            "recipe_ingredients_attributes": ingredientList
         }
         fetch("/recipes", {
             method: "POST",
@@ -76,8 +73,7 @@ function NewRecipe ({ onAddRecipe, recipes }) {
             .then((newIngredient) => {
                 handleIngredientAdd(newIngredient)
                 setIngredientList([{
-                    ingredient: "",
-                    measurement: ""
+                    ingredient: ""
                 }])
             })
     }
@@ -117,7 +113,7 @@ function NewRecipe ({ onAddRecipe, recipes }) {
                     />
                 </label>
                 
-                <AddIngredient handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} handleIngredientAdd={handleIngredientAdd} ingredientList={ingredientList}/>
+                <AddIngredient handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} handleIngredientAdd={handleIngredientAdd} ingredientList={ingredientList} />
                 <button type="submit">Submit Recipe</button>
             </form>
             </div>

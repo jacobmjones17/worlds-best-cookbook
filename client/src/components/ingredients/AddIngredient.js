@@ -1,6 +1,6 @@
 import React from "react"
 
-function AddIngredient ({ handleIngredientAdd, handleIngredientChange, handleIngredientRemove, ingredientList}) {
+function AddIngredient ({ handleIngredientAdd, handleIngredientChange, handleIngredientRemove, ingredientList }) {
 
     return (
         <div className="form-field">
