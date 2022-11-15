@@ -5,7 +5,7 @@ function Recipe({ recipeCard }) {
     const [flip, setFlip] = useState(false);
 
     const ingredient = recipeCard.measurement_and_name.map((ingredient) => {
-        return (<li>{ingredient.name}</li>)
+        return (<li>{ingredient.ingredient}</li>)
     })
 
     const measurement = recipeCard.measurement_and_name.map((ingredient) => {

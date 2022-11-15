@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
     before_action :authorize
     
     def create
-        byebug
+        
         user = User.find_by(id: session[:user_id])
         if user
             recipe = user.recipes.create(recipe_params)
@@ -16,36 +16,49 @@ class RecipesController < ApplicationController
         end
     end
 
-        def index
-            recipes = Recipe.all
+    def update
+        byebug
+        user = User.find_by(id: session[:user_id])
+        recipe = Recipe.find_by(id: params[:id]) 
 
-            if session[:user_id]
-                render json: recipes
-            else
-                render json: { errors: ["Not authorized"] }, status: :unauthorized
-            end
+        if recipe.user_id == user.id
+            recipe.update(recipe_params)
+            render json: recipe
+        else
+            render json: { errors: [recipe.errors.full_messages] }, status: :unprocessable_entity
         end
+    end
 
-        def show
-            recipe = Recipe.find_by(id: params[:id])
-            if recipe
-                render json: recipe
-            else
-            render json: { error:"Recipe not found"}
-            end 
+    def index
+        recipes = Recipe.all
+
+        if session[:user_id]
+            render json: recipes
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
+    end
 
-        def destroy
-            recipe = Recipe.find_by(id: params[:id])
-            if recipe.user_id == @current_user.id
-                recipe.destroy
-                head:no_content
-            end
+    def show
+        recipe = Recipe.find_by(id: params[:id])
+        if recipe
+            render json: recipe
+        else
+        render json: { error:"Recipe not found"}
+        end 
+    end
+
+    def destroy
+        recipe = Recipe.find_by(id: params[:id])
+        if recipe.user_id == @current_user.id
+            recipe.destroy
+            head:no_content
         end
+    end
 
-        private 
+    private 
 
-        def recipe_params
-            params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:ingredient, :measurement])
-        end
+    def recipe_params
+        params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:ingredient, :measurement])
+    end
 end

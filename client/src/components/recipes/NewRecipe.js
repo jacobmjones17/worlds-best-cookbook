@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import AddIngredient from "../ingredients/AddIngredient"
 
-function NewRecipe ({ onAddRecipe, recipes }) {
+function NewRecipe ({ onAddRecipe }) {
     const [formData, setFormData] = useState({
         name: "",
         instructions: "",
         picture: "",
     });
+    
     const [ingredientList, setIngredientList] = useState([{ ingredient: "", measurement: ""}]);
 
     const handleIngredientChange = (e, index) => {
@@ -25,8 +26,7 @@ function NewRecipe ({ onAddRecipe, recipes }) {
     const handleIngredientAdd = () => {
     setIngredientList([...ingredientList, { ingredient: "", measurement: "" }]);
     };
-
-
+    
 
     function handleChange(event) {
         setFormData({
