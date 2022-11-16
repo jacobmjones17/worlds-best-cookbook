@@ -6,7 +6,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
     const params = useParams();
 
     const parsedParams = parseInt(params.id)
-    
+
     const recipeToEdit = recipes.find(recipe => {
         return recipe.id === parsedParams
     })
@@ -32,8 +32,23 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
         });
     };
 
-    const handleIngredientUpdate = () => {
-        setIngredientList([...ingredientList, { ingredient: "", measurement: "" }]);
+    const updatedIngredients = ingredientList.map((ingredient) => {
+        return ingredient
+    });
+
+
+    console.log(updatedIngredients)
+
+    const handleIngredientUpdate = (updatedIngredient) => {
+        debugger
+        const updatedIngredients = ingredientList.map((ingredient) => {
+            if (ingredient.id === updatedIngredient.id) {
+                return updatedIngredient
+            } else {
+                return ingredient
+            }
+        })
+        setIngredientList(updatedIngredients)
         };
 
     const handleIngredientChange = (e, index) => {
@@ -52,30 +67,22 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-    
+        const recipeObject = {...formData, recipe_ingredient_attributes: ingredientList }
+        console.log(recipeObject)
         fetch(`/recipes/${params.id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData, ingredientList),
+        body: JSON.stringify(recipeObject),
         })
         .then((response) => response.json())
-            .then((updatedRecipe) => {
+            .then((updatedRecipe) => 
                 onUpdateRecipe(updatedRecipe)
-                setFormData({
-                name: "",
-                instructions: "",
-                picture: "",
-            })})
+                )
             .then((updatedIngredient) => {
                 handleIngredientUpdate(updatedIngredient)
-                setIngredientList([{
-                    ingredient: "",
-                    measurement: ""
-                }])
-            })
-            
+            })    
     }
     
     return (
