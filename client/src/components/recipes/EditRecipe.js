@@ -11,8 +11,8 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
         return recipe.id === parsedParams
     })
 
-    const ingredients = recipeToEdit.measurement_and_name.map(ingredient => {
-        return ingredient
+    const recipeIngredients = recipeToEdit.measurement_and_name.map(recipeIngredient => {
+        return recipeIngredient
     })
 
 
@@ -22,7 +22,8 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
         picture: recipeToEdit.picture,
     });
 
-    const [ingredientList, setIngredientList] = useState(ingredients);
+    const [recipeIngredientList, setIngredientList] = useState(recipeIngredients);
+
 
     function handleChange(event) {
         setFormData({
@@ -32,20 +33,12 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
         });
     };
 
-    const updatedIngredients = ingredientList.map((ingredient) => {
-        return ingredient
-    });
-
-
-    console.log(updatedIngredients)
-
-    const handleIngredientUpdate = (updatedIngredient) => {
-        debugger
-        const updatedIngredients = ingredientList.map((ingredient) => {
-            if (ingredient.id === updatedIngredient.id) {
-                return updatedIngredient
+    const handleIngredientUpdate = (updatedRecipeIngredient) => {
+        const updatedIngredients = recipeIngredientList.map((recipeIngredient) => {
+            if (recipeIngredient.id === updatedRecipeIngredient.id) {
+                return updatedRecipeIngredient
             } else {
-                return ingredient
+                return recipeIngredient
             }
         })
         setIngredientList(updatedIngredients)
@@ -53,13 +46,13 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
 
     const handleIngredientChange = (e, index) => {
         const { name, value } = e.target;
-        const list = [...ingredientList];
+        const list = [...recipeIngredientList];
         list[index][name] = value;
         setIngredientList(list);
     };
 
     const handleIngredientRemove = (index) => {
-        const list = [...ingredientList];
+        const list = [...recipeIngredientList];
         list.splice(index, 1);
         setIngredientList(list);
         };
@@ -67,22 +60,16 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        const recipeObject = {...formData, recipe_ingredient_attributes: ingredientList }
-        console.log(recipeObject)
+        const updatedObject = {...formData, recipe_ingredients_attributes: [...recipeIngredientList]}
         fetch(`/recipes/${params.id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(recipeObject),
+        body: JSON.stringify(updatedObject),
         })
         .then((response) => response.json())
-            .then((updatedRecipe) => 
-                onUpdateRecipe(updatedRecipe)
-                )
-            .then((updatedIngredient) => {
-                handleIngredientUpdate(updatedIngredient)
-            })    
+        .then((updatedRecipe) => onUpdateRecipe(updatedRecipe))
     }
     
     return (
@@ -117,7 +104,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
                         onChange={handleChange}
                     />
                 </label>
-                <EditIngredient handleIngredientUpdate={handleIngredientUpdate} ingredientList={ingredientList} handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} />
+                <EditIngredient handleIngredientUpdate={handleIngredientUpdate} recipeIngredientList={recipeIngredientList} handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} />
                 <button type="submit">Confirm Edit</button>
             </form>
             </div>

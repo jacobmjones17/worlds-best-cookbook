@@ -1,11 +1,11 @@
 import React from "react"
 
-function EditIngredient ({ handleIngredientUpdate, ingredientList, handleIngredientChange, handleIngredientRemove }) {
+function EditIngredient ({ handleIngredientUpdate, recipeIngredientList, handleIngredientChange, handleIngredientRemove }) {
     
 
     return (
         <div className="form-field">
-        {ingredientList.map((singleIngredient, index) => (
+        {recipeIngredientList.map((singleIngredient, index) => (
             <div key={index} className="ingredients-list">
             <div className="first-division">
             <label htmlFor="ingredient">Ingredient</label>
@@ -26,7 +26,7 @@ function EditIngredient ({ handleIngredientUpdate, ingredientList, handleIngredi
                 onChange={(e) => handleIngredientChange(e, index)}
                 required
                 />
-                {ingredientList.length - 1 === index && ingredientList.length < 10 && (
+                {recipeIngredientList.length - 1 === index && recipeIngredientList.length < 10 && (
                 <button
                     type="button"
                     onClick={handleIngredientUpdate}
@@ -37,7 +37,7 @@ function EditIngredient ({ handleIngredientUpdate, ingredientList, handleIngredi
                 )}
             </div>
             <div className="second-division">
-                {ingredientList.length !== 1 && (
+                {recipeIngredientList.length !== 1 && (
                 <button
                     type="button"
                     onClick={() => handleIngredientRemove(index)}

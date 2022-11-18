@@ -17,11 +17,10 @@ class RecipesController < ApplicationController
     end
 
     def update
-        
         user = User.find_by(id: session[:user_id])
         recipe = Recipe.find_by(id: params[:id]) 
-        # byebug
         if recipe.user_id == user.id
+            # byebug
             recipe.update(recipe_params)
             render json: recipe
         else
@@ -59,6 +58,6 @@ class RecipesController < ApplicationController
     private 
 
     def recipe_params
-        params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:ingredient, :measurement])
+        params.permit(:name, :instructions, :picture,  recipe_ingredients_attributes: [:id, :ingredient_id, :ingredient, :measurement])
     end
 end
