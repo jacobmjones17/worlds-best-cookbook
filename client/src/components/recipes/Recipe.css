@@ -22,7 +22,7 @@
     background-position: center;
     background-size:cover;
     transform-style: preserve-3d;
-    height: 525px;
+    height: 550px;
     width: 450px;
     transition: 150ms;
     cursor: pointer;
@@ -84,18 +84,46 @@
     margin-top: 12rem;
 }
 
-.card .back h2{
+.card .back h2 {
     font-size: 25px;
     display: block;
     margin-bottom: 4rem;
 }
 
-.card .back h3{
+.card .back h3 {
     font-size: 25px;
     display: block;
     margin-bottom: 12rem;
 }
 
-.card .back span{
+.card .back span {
     margin-right: 1rem;
+}
+
+.remove {
+    width: 450px;
+    padding: 10px;
+    border: 5px solid #000;
+    outline: none !important;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.99rem;
+    font-weight: bolder;
+    color: white;
+    background: black;
+    cursor: pointer;
+}
+
+.edit {
+    width: 450px;
+    padding: 10px;
+    border: 5px solid #000;
+    outline: none !important;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.99rem;
+    font-weight: bolder;
+    color: white;
+    background: black;
+    cursor: pointer;
 }

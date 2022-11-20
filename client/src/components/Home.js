@@ -10,7 +10,7 @@ function Home( { recipes, onDeleteRecipe, onAddRecipe } ) {
     return (
         <div className="description">
             <p>Store all your favorite recipes here!</p>
-            <button type="submit" onClick={() => navigate("/recipes/create")}>Add Recipe</button>
+            <button className="add-recipe" type="submit" onClick={() => navigate("/recipes/create")}>Add Recipe</button>
             <div className="recipe-container">
                 <RecipeList 
                 recipes={recipes} 
