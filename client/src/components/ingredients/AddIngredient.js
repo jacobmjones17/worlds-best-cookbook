@@ -1,4 +1,5 @@
 import React from "react"
+import "./Ingredient.css"
 
 function AddIngredient ({ handleIngredientAdd, handleIngredientChange, handleIngredientRemove, ingredientList }) {
 
