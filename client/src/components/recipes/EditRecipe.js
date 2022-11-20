@@ -22,7 +22,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
         picture: recipeToEdit.picture,
     });
 
-    const [recipeIngredientList, setIngredientList] = useState(recipeIngredients);
+    const [recipeIngredientList, setRecipeIngredientList] = useState(recipeIngredients);
 
 
     function handleChange(event) {
@@ -33,28 +33,21 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
         });
     };
 
-    const handleIngredientUpdate = (updatedRecipeIngredient) => {
-        const updatedIngredients = recipeIngredientList.map((recipeIngredient) => {
-            if (recipeIngredient.id === updatedRecipeIngredient.id) {
-                return updatedRecipeIngredient
-            } else {
-                return recipeIngredient
-            }
-        })
-        setIngredientList(updatedIngredients)
+    const handleIngredientAdd = () => {
+        setRecipeIngredientList([...recipeIngredientList, { ingredient: "", measurement: "" }]);
         };
 
     const handleIngredientChange = (e, index) => {
         const { name, value } = e.target;
         const list = [...recipeIngredientList];
         list[index][name] = value;
-        setIngredientList(list);
+        setRecipeIngredientList(list);
     };
 
     const handleIngredientRemove = (index) => {
         const list = [...recipeIngredientList];
         list.splice(index, 1);
-        setIngredientList(list);
+        setRecipeIngredientList(list);
         };
             
 
@@ -104,7 +97,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
                         onChange={handleChange}
                     />
                 </label>
-                <EditIngredient handleIngredientUpdate={handleIngredientUpdate} recipeIngredientList={recipeIngredientList} handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} />
+                <EditIngredient handleIngredientAdd={handleIngredientAdd} recipeIngredientList={recipeIngredientList} handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} />
                 <button type="submit">Confirm Edit</button>
             </form>
             </div>

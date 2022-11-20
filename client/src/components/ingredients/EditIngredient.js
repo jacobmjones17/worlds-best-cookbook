@@ -1,6 +1,6 @@
 import React from "react"
 
-function EditIngredient ({ handleIngredientUpdate, recipeIngredientList, handleIngredientChange, handleIngredientRemove }) {
+function EditIngredient ({ handleIngredientAdd, recipeIngredientList, handleIngredientChange, handleIngredientRemove }) {
     
 
     return (
@@ -29,7 +29,7 @@ function EditIngredient ({ handleIngredientUpdate, recipeIngredientList, handleI
                 {recipeIngredientList.length - 1 === index && recipeIngredientList.length < 10 && (
                 <button
                     type="button"
-                    onClick={handleIngredientUpdate}
+                    onClick={handleIngredientAdd}
                     className="add-btn"
                 >
                 <span>Add an Ingredient</span>
