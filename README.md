@@ -6,15 +6,13 @@ This project is a simple web application that allows users to store their favori
 
 ## Setup
 
-FIRST 
-run "bundle install" to install all dependencies
+FIRST
+1. navigate into server folder by typing "cd server" in the terminal
+2. run "bundle install" to install all dependencies
+3. run "rails db:migrate" and "rails db:seed" or just "rails db:reset" 
+4. start the rails server by typing "rails s" in the terminal
 
 SECOND
-1. navigate into server folder by typing "cd server" in the terminal
-2. run "rails db:migrate" and "rails db:seed" or just "rails db:reset" 
-3. start the rails server by typing "rails s" in the terminal
-
-THIRD
 1. navigate into client folder by typing "cd client" in the terminal
 2. run "npm install" to install all the dependencies
 3. run "npm start" to run client
