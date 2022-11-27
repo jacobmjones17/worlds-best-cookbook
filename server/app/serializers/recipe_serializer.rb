@@ -1,8 +1,6 @@
 class RecipeSerializer < ActiveModel::Serializer
   attributes :id, :name, :instructions, :picture, :measurement_and_name
     belongs_to :user
-    # has_many :recipe_ingredients
-    # has_many :ingredients, through: :recipe_ingredients
 
     def measurement_and_name
       object.recipe_ingredients.map { |recipe_ingredient| {id: recipe_ingredient.id, ingredient_id: recipe_ingredient.ingredient_id, ingredient: recipe_ingredient.recipe_ingredient_name, measurement: recipe_ingredient.measurement} }

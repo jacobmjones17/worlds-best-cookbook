@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import EditIngredient from "../ingredients/EditIngredient";
 
 function EditRecipe ({ recipes, onUpdateRecipe }) {
     const params = useParams();
+    const navigate = useNavigate();
 
     const parsedParams = parseInt(params.id)
 
@@ -77,6 +78,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <label>
@@ -86,6 +88,7 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
                         name="instructions"
                         value={formData.instructions}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <label>
@@ -95,10 +98,11 @@ function EditRecipe ({ recipes, onUpdateRecipe }) {
                         name="picture"
                         value={formData.picture}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <EditIngredient handleIngredientAdd={handleIngredientAdd} recipeIngredientList={recipeIngredientList} handleIngredientChange={handleIngredientChange} handleIngredientRemove={handleIngredientRemove} />
-                <button type="submit">Confirm Edit</button>
+                <button type="submit" onClick={() => navigate("/recipes")}>Confirm Edit</button>
             </form>
             </div>
         </section>

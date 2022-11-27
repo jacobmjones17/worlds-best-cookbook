@@ -59,7 +59,7 @@ const App = () => {
 
 return (
     <div className="App">
-    <NavBar />
+    <NavBar loggedIn={loggedIn} logoutUser={logoutUser} currentUser={user}/>
     <Routes>
     <Route path="/recipes/:id/edit" element={<EditRecipe recipes={recipes} onUpdateRecipe={handleUpdateRecipe}/>} />
     <Route path="/recipes/create" element={< NewRecipe onAddRecipe={handleAddRecipe} recipes={recipes} />} />

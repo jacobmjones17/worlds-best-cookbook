@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :users
   resources :recipe_ingredients
 
+  #get dynamic route working
+
+  get "/recipes/:id", to: "recipes#show"
+
+  get "/recipes/search/:keyword", to: "recipes#show_specific"
+
   post "/login", to: "sessions#create"
 
   post "/signup", to: "users#create"

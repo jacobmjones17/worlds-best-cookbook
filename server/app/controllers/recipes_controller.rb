@@ -20,7 +20,6 @@ class RecipesController < ApplicationController
         user = User.find_by(id: session[:user_id])
         recipe = Recipe.find_by(id: params[:id]) 
         if recipe.user_id == user.id
-            # byebug
             recipe.update(recipe_params)
             render json: recipe
         else
@@ -53,6 +52,11 @@ class RecipesController < ApplicationController
             recipe.destroy
             head:no_content
         end
+    end
+
+    def show_specific
+        recipes = Recipe.select {|r| r.name.downcase.include? params[:keyword]}
+        render json: recipes
     end
 
     private 

@@ -81,6 +81,7 @@ function NewRecipe ({ onAddRecipe }) {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <label>
@@ -90,6 +91,7 @@ function NewRecipe ({ onAddRecipe }) {
                         name="instructions"
                         value={formData.instructions}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 <label>
@@ -99,6 +101,7 @@ function NewRecipe ({ onAddRecipe }) {
                         name="picture"
                         value={formData.picture}
                         onChange={handleChange}
+                        required
                     />
                 </label>
                 

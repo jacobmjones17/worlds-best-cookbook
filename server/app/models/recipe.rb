@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
     has_many :ingredients, through: :recipe_ingredients
 
     validates :name, uniqueness: true
+    validates :name, :instructions, :picture, presence: true
 
     def recipe_ingredients_attributes=(array)
       array.each do |hash|
